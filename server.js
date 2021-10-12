@@ -17,12 +17,18 @@ io.on("connection", (socket) => {
     socket.join(user.room);
 
     socket.emit("message", formatMessage("admin", "Welcome to Chat"));
+    
     socket.broadcast
       .to(user.room)
       .emit(
         "message",
         formatMessage("admin", `${user.username} has joined to Chat`)
       );
+
+    io.to(user.room).emit('roomUsers', {
+      room: user.room,
+      users:getRoomUsers(user.room)
+    })
   });
 
   socket.on("chatMessage", (msg) => {
@@ -36,6 +42,11 @@ io.on("connection", (socket) => {
     if(user) {
     io.to(user.room).emit("message", formatMessage("admin", `${user.username} has left the chat`));
     };
+
+    io.to(user.room).emit('roomUsers', {
+      room: user.room,
+      users:getRoomUsers(user.room)
+    })
   });
 });
 
