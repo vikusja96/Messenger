@@ -6,8 +6,8 @@ exports.userJoin = (id, username, room) => {
   return user
 };
 
-exports.getCurrentUser = () => {
-  return users.find(user => user.id = id);
+exports.getCurrentUser = (id) => {
+  return users.find(user => user.id === id);
 };
 
 exports.userLeave = (id) => {
