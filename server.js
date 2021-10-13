@@ -16,23 +16,24 @@ io.on("connection", (socket) => {
     const user = userJoin(socket.id, username, room);
     socket.join(user.room);
 
-    socket.emit("message", formatMessage("admin", "Welcome to Chat"));
+    socket.emit("message", formatMessage("Room Bot", "Welcome to Room 👋 "));
     
     socket.broadcast
       .to(user.room)
       .emit(
         "message",
-        formatMessage("admin", `${user.username} has joined to Chat`)
+        formatMessage("Room Bot", `${user.username} has joined the Room! Hi 👋 `)
       );
 
     io.to(user.room).emit('roomUsers', {
       room: user.room,
-      users:getRoomUsers(user.room)
+      users: getRoomUsers(user.room)
     })
   });
 
   socket.on("chatMessage", (msg) => {
-    const user = getCurrentUser(socket.io);
+    const user = getCurrentUser(socket.id);
+
     io.to(user.room).emit("message", formatMessage(user.username, msg));
   });
 
@@ -40,7 +41,7 @@ io.on("connection", (socket) => {
     const user = userLeave(socket.id);
 
     if(user) {
-    io.to(user.room).emit("message", formatMessage("admin", `${user.username} has left the chat`));
+    io.to(user.room).emit("message", formatMessage("Room Bot", `${user.username} has left the Room! Bye 👋  `));
     };
 
     io.to(user.room).emit('roomUsers', {
