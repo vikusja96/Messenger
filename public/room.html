@@ -7,7 +7,10 @@
       href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap"
       rel="stylesheet"
     />
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&family=Lobster&display=swap" rel="stylesheet">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&family=Lobster&display=swap"
+      rel="stylesheet"
+    />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css"
@@ -25,30 +28,37 @@
       </header>
       <main class="main room__main">
         <div class="room__sidebar">
-          <h3> Room Name:</h3>
+          <h3>Room Name:</h3>
           <h2 id="room-name"></h2>
-          <h3> Participants:</h3>
+          <h3>Participants:</h3>
           <ul id="users"></ul>
         </div>
         <div class="room__chat"></div>
-      </main>
-      <div class="chat__form">
-        <form id="chat-form">
-          <input
+        <div class="chat__form">
+          <form id="chat-form">
+            <input
             id="msg"
             type="text"
             placeholder="Enter Message"
             required
             autocomplete="off"
-          />
-          <button class="btn ripple"><i class="fas fa-paper-plane"></i> Send</button>
-        </form>
-      </div>
+            />
+            <button class="btn ripple">
+              <i class="fas fa-paper-plane"></i> Send
+            </button>
+          </form>
+        </div>
+      </main>
     </div>
-
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.10.1/qs.min.js"
       integrity="sha512-aTKlYRb1QfU1jlF3k+aS4AqTpnTXci4R79mkdie/bp6Xm51O5O3ESAYhvg6zoicj/PD6VYY0XrYwsWLcvGiKZQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.3.0/socket.io.js"
+      integrity="sha512-g6IDmcVyjQOptVso4kf6adJ5TOfiAznQLg47qiscWvor/cMHje2RCh2tU39DB4udBIm5ZhL4CPcvVDHEzo0HgA=="
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     ></script>
